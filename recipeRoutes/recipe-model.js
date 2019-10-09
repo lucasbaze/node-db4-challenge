@@ -3,7 +3,7 @@ const config = require('../knexfile');
 
 const db = knex(config.development);
 
-module.exports = {};
+module.exports = { getRecipes };
 
 //
 //Get all recipes
