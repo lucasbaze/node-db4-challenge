@@ -13,7 +13,6 @@ module.exports = {
         },
         seeds: {
             directory: './seeds',
-            specific: '01_create_recipe',
         },
     },
 };
