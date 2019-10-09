@@ -1,0 +1,17 @@
+{
+  "name": "node-db4-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucasbaze/node-db4-challenge.git",
+  "author": "Lucas Bazemore <lucasabazemore@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.5",
+    "pg": "^7.12.1",
+    "sqlite3": "^4.1.0"
+  }
+}
