@@ -6,10 +6,16 @@ router.get('/', async (req, res) => {
     res.status(200).json(recipes);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id/shoppingList', async (req, res) => {
     let { id } = req.params;
     let shoppingList = await Recipes.getShoppingList(id);
     res.status(200).json(shoppingList);
+});
+
+router.get('/:id/instructions', async (req, res) => {
+    let { id } = req.params;
+    let instructions = await Recipes.getInstructions(id);
+    res.status(200).json(instructions);
 });
 
 module.exports = router;

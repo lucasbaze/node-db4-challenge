@@ -3,7 +3,7 @@ const config = require('../knexfile');
 
 const db = knex(config.development);
 
-module.exports = { getRecipes, getShoppingList };
+module.exports = { getRecipes, getShoppingList, getInstructions };
 
 //
 //Get all recipes
@@ -21,8 +21,22 @@ function getShoppingList(recipe_id) {
             'quantity as Quantity',
             'uom as Unit of Measure'
         )
-        .from('recipe_ingredients')
-        .join('recipes', 'recipes.recipe_id', 'recipe_ingredients.recipe_id')
-        .join('ingredients', 'ingredients.ing_id', 'recipe_ingredients.ing_id')
-        .where({ 'recipe_ingredients.recipe_id': recipe_id });
+        .from('recipe_ingredients as r_i')
+        .join('recipes as r', 'r.recipe_id', 'r_i.recipe_id')
+        .join('ingredients as i', 'i.ing_id', 'r_i.ing_id')
+        .where({ 'r_i.recipe_id': recipe_id });
+}
+
+//
+//Get Instructions for the recipe
+function getInstructions(recipe_id) {
+    return db
+        .select(
+            'recipe_name as Recipe',
+            'step as Step',
+            'step_direction as Instructions'
+        )
+        .from('recipe_steps as r_s')
+        .where({ 'r_s.recipe_id': recipe_id })
+        .join('recipes as r', 'r.recipe_id', 'r_s.recipe_id');
 }
