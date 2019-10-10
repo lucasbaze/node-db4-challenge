@@ -6,6 +6,7 @@ const morgan = require('morgan');
 //
 //Custom Routes
 const recipeRoutes = require('./recipeRoutes/recipe-routes');
+const ingRoutes = require('./ingredientsRoutes/ingredients-routes');
 
 //
 //Initialize server
@@ -27,6 +28,7 @@ server.get('/', (req, res) => {
 //
 //Route Handlers
 server.use('/api/recipes', recipeRoutes);
+server.use('/api/ings', ingRoutes);
 
 //
 //Error handler

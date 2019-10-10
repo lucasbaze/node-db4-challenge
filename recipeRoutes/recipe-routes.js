@@ -21,7 +21,7 @@ router.get('/:id/instructions', async (req, res) => {
 });
 
 //
-// Helper function
+// Helper function to reo-order the returned query
 function groupObject(object, groupName, groupOn) {
     let grouped = { [groupOn]: [] };
     for (let item of object) {
